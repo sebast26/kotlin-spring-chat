@@ -39,6 +39,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
+	testImplementation("app.cash.turbine:turbine:0.3.0")
 }
 
 tasks.withType<Test> {
