@@ -11,17 +11,17 @@ import org.springframework.stereotype.Service
 class PersistentMessageService(
     val messageRepository: MessageRepository
 ) : MessageService {
-    override fun latest(): List<MessageVM> {
+    override suspend fun latest(): List<MessageVM> {
         return messageRepository.findLatest()
             .mapToViewModel()
     }
 
-    override fun after(messageId: String): List<MessageVM> {
+    override suspend fun after(messageId: String): List<MessageVM> {
         return messageRepository.findLatest(messageId)
             .mapToViewModel()
     }
 
-    override fun post(message: MessageVM) {
+    override suspend fun post(message: MessageVM) {
         messageRepository.save(message.asDomainObject())
     }
 }
